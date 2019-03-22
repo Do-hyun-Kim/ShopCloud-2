@@ -114,6 +114,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Mainheader", for: indexPath) as? MainHeaderView
             headerview?.MainTitle.text = "Main"
+            headerview?.MainTitle.textColor = UIColor.gray
             return headerview!
         }
         fatalError()
