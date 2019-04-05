@@ -8,18 +8,29 @@
 
 import UIKit
 
+
 class CustomCollectionCell: UICollectionViewCell {
+    
+    
 
     @IBOutlet weak var MainImg: UIImageView!
     @IBOutlet weak var category: UILabel!
     @IBOutlet weak var Title: UILabel!
     @IBOutlet weak var Money: UILabel!
+    @IBOutlet weak var heartbutton: UIButton!
+    @IBOutlet weak var Profileimg: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
      
         
     }
+    
+    
+    
     
     public func configure(with model : CellModel){
         MainImg.image = model.image

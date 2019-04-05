@@ -52,6 +52,31 @@
                         <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqy-cL-qHe">
+                        <rect key="frame" x="11" y="328" width="19" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="aEh-6d-PoE"/>
+                            <constraint firstAttribute="height" constant="17" id="gBm-Hg-iq6"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="blacklike"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Acs-Ch-gVe">
+                        <rect key="frame" x="9" y="206" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="X5d-p7-ReW"/>
+                            <constraint firstAttribute="width" constant="20" id="axG-Wj-l8h"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXZ-Bc-dJx">
+                        <rect key="frame" x="35" y="210.5" width="37" height="11"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="11" id="FBu-eo-WdE"/>
+                            <constraint firstAttribute="width" constant="37" id="mTh-eb-jfG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,14 +84,20 @@
             <constraints>
                 <constraint firstItem="TYw-9f-3cX" firstAttribute="top" secondItem="UCK-Pq-bYQ" secondAttribute="bottom" constant="4" id="0sb-K5-SqS"/>
                 <constraint firstItem="Wuw-to-0hk" firstAttribute="top" secondItem="9Bl-X8-HeO" secondAttribute="bottom" constant="18" id="1m6-VO-N23"/>
+                <constraint firstItem="BXZ-Bc-dJx" firstAttribute="leading" secondItem="Acs-Ch-gVe" secondAttribute="trailing" constant="6" id="6MV-5m-j6p"/>
+                <constraint firstItem="BXZ-Bc-dJx" firstAttribute="centerY" secondItem="Acs-Ch-gVe" secondAttribute="centerY" id="6Nt-et-meL"/>
                 <constraint firstItem="UCK-Pq-bYQ" firstAttribute="centerX" secondItem="Wuw-to-0hk" secondAttribute="centerX" id="89L-oB-pSa"/>
+                <constraint firstAttribute="bottom" secondItem="kqy-cL-qHe" secondAttribute="bottom" constant="5" id="A7r-yc-fPD"/>
                 <constraint firstItem="9Bl-X8-HeO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="A8C-Af-FFP"/>
                 <constraint firstItem="UCK-Pq-bYQ" firstAttribute="top" secondItem="Wuw-to-0hk" secondAttribute="bottom" constant="5" id="DYe-YL-XC3"/>
                 <constraint firstItem="UCK-Pq-bYQ" firstAttribute="leading" secondItem="Wuw-to-0hk" secondAttribute="leading" id="FhI-Vc-GpP"/>
+                <constraint firstItem="Wuw-to-0hk" firstAttribute="top" secondItem="Acs-Ch-gVe" secondAttribute="bottom" constant="26" id="HWj-fr-hY3"/>
                 <constraint firstAttribute="trailing" secondItem="Wuw-to-0hk" secondAttribute="trailing" constant="20" id="NhE-Az-rpY"/>
                 <constraint firstItem="TYw-9f-3cX" firstAttribute="centerX" secondItem="Wuw-to-0hk" secondAttribute="centerX" id="OA3-83-I9r"/>
+                <constraint firstAttribute="trailing" secondItem="kqy-cL-qHe" secondAttribute="trailing" constant="200" id="RgV-BR-cnd"/>
                 <constraint firstItem="Wuw-to-0hk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="U4W-PH-FjH"/>
                 <constraint firstItem="9Bl-X8-HeO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="anY-Ht-GS7"/>
+                <constraint firstItem="Acs-Ch-gVe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="9" id="hJ7-hx-KFQ"/>
                 <constraint firstAttribute="trailing" secondItem="9Bl-X8-HeO" secondAttribute="trailing" id="mBc-pt-w7m"/>
                 <constraint firstItem="TYw-9f-3cX" firstAttribute="leading" secondItem="UCK-Pq-bYQ" secondAttribute="leading" id="plQ-Mi-99U"/>
                 <constraint firstItem="TYw-9f-3cX" firstAttribute="trailing" secondItem="UCK-Pq-bYQ" secondAttribute="trailing" id="yiR-uw-ogJ"/>
@@ -77,10 +108,16 @@
             <connections>
                 <outlet property="MainImg" destination="9Bl-X8-HeO" id="M0X-XT-Pxh"/>
                 <outlet property="Money" destination="TYw-9f-3cX" id="Pvb-pT-vEM"/>
+                <outlet property="Profileimg" destination="Acs-Ch-gVe" id="NQe-Ze-2nw"/>
                 <outlet property="Title" destination="UCK-Pq-bYQ" id="29T-Yi-DUD"/>
                 <outlet property="category" destination="Wuw-to-0hk" id="5Dd-hz-Zhc"/>
+                <outlet property="heartbutton" destination="kqy-cL-qHe" id="aFl-Ic-bQb"/>
+                <outlet property="name" destination="BXZ-Bc-dJx" id="h8k-i6-1jo"/>
             </connections>
             <point key="canvasLocation" x="-177.59999999999999" y="415.59220389805103"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="blacklike" width="51.200000762939453" height="51.200000762939453"/>
+    </resources>
 </document>

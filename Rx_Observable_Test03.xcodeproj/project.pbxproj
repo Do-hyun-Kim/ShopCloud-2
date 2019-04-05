@@ -17,6 +17,8 @@
 		D1613B862242D44200837D2B /* CategoryColletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1613B842242D44200837D2B /* CategoryColletionCell.swift */; };
 		D1613B872242D44200837D2B /* CategoryColletionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1613B852242D44200837D2B /* CategoryColletionCell.xib */; };
 		D1613B892242E17000837D2B /* Test03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1613B882242E16F00837D2B /* Test03.jpg */; };
+		D1613B8C2253E4BF00837D2B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1613B8B2253E4BF00837D2B /* LoginViewController.swift */; };
+		D1613B8E2253E83A00837D2B /* UIMainNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1613B8D2253E83A00837D2B /* UIMainNaviViewController.swift */; };
 		D18FF31B2240122D0020C698 /* Test01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D18FF31A2240122C0020C698 /* Test01.jpg */; };
 		D1AF3144224158EF004CB64A /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AF3142224158EF004CB64A /* CustomCollectionCell.swift */; };
 		D1AF3145224158EF004CB64A /* CustomCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1AF3143224158EF004CB64A /* CustomCollectionCell.xib */; };
@@ -40,6 +42,8 @@
 		D1613B842242D44200837D2B /* CategoryColletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColletionCell.swift; sourceTree = "<group>"; };
 		D1613B852242D44200837D2B /* CategoryColletionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryColletionCell.xib; sourceTree = "<group>"; };
 		D1613B882242E16F00837D2B /* Test03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test03.jpg; sourceTree = "<group>"; };
+		D1613B8B2253E4BF00837D2B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D1613B8D2253E83A00837D2B /* UIMainNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainNaviViewController.swift; sourceTree = "<group>"; };
 		D18FF31A2240122C0020C698 /* Test01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test01.jpg; sourceTree = "<group>"; };
 		D1AF3142224158EF004CB64A /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 		D1AF3143224158EF004CB64A /* CustomCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionCell.xib; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		D13508E82236C9AF00AD5D61 /* Rx_Observable_Test03 */ = {
 			isa = PBXGroup;
 			children = (
+				D1613B8D2253E83A00837D2B /* UIMainNaviViewController.swift */,
+				D1613B8B2253E4BF00837D2B /* LoginViewController.swift */,
 				D13508E92236C9AF00AD5D61 /* AppDelegate.swift */,
 				D13508EB2236C9AF00AD5D61 /* ViewController.swift */,
 				D13508ED2236C9AF00AD5D61 /* Main.storyboard */,
@@ -223,11 +229,17 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Rx_Observable_Test03/Pods-Rx_Observable_Test03-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxFacebook/RxFacebook.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
@@ -236,11 +248,17 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFacebook.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -256,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1613B8C2253E4BF00837D2B /* LoginViewController.swift in Sources */,
+				D1613B8E2253E83A00837D2B /* UIMainNaviViewController.swift in Sources */,
 				D1AF314722417EA3004CB64A /* MainHeaderView.swift in Sources */,
 				D1AF3144224158EF004CB64A /* CustomCollectionCell.swift in Sources */,
 				D13508F22236C9AF00AD5D61 /* Rx_Observable_Test03.xcdatamodeld in Sources */,

@@ -8,7 +8,11 @@ target 'Rx_Observable_Test03' do
 	pod 'RxSwift',    '~> 4.0'
     pod 'RxCocoa',    '~> 4.0'
     pod "RxRealm"
-    pod 'RxAlamofire'    	
+    pod 'RxAlamofire'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'RxFacebook'
+		    	
 
 
 
