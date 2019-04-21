@@ -1,22 +1,20 @@
 //
-//  UIMainNaviViewController.swift
+//  UIMainTabbarViewController.swift
 //  Rx_Observable_Test03
 //
-//  Created by 김도현 on 03/04/2019.
+//  Created by Kim dohyun on 09/04/2019.
 //  Copyright © 2019 김도현. All rights reserved.
 //
 
 import UIKit
 
-class UIMainNaviViewController: UINavigationController {
+class UIMainTabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         // Do any additional setup after loading the view.
     }
-
     
 
     /*

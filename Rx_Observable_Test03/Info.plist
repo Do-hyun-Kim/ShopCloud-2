@@ -42,19 +42,21 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
     
+    
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>fb479801279091816</string>
+                <string>fb1595422857258491</string>
             </array>
         </dict>
     </array>
     <key>FacebookAppID</key>
-    <string>479801279091816</string>
+    <string>1595422857258491</string>
     <key>FacebookDisplayName</key>
-    <string>MyDream</string>
+    <string>Shork</string>
+    
     
     
     <key>LSApplicationQueriesSchemes</key>

@@ -24,6 +24,11 @@ class LoginViewController : UIViewController {
     @IBAction func Loginbutton(_ sender: AnyObject) {
         signIn()
     }
+    @IBAction func TotalLoginButton(_ sender: AnyObject) {
+        let Loginvc = self.storyboard?.instantiateViewController(withIdentifier: "TotalNavi") as? UITotalLoginNaviViewController
+        self.present(Loginvc!, animated: true, completion: nil)
+        
+    }
     
     let loginManiger : LoginManager = LoginManager()
     let disposeBag = DisposeBag()
@@ -42,6 +47,9 @@ class LoginViewController : UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    
+    
     func signIn() {
         loginManiger.rx.logIn(with: [ReadPermission.publicProfile]).flatMap { [weak self] (LoginResults) -> Observable<EmailResult> in
             guard let strongself = self else { return .just((nil , "Somthing went wrong")) }
@@ -56,11 +64,8 @@ class LoginViewController : UIViewController {
             
             }.subscribe(onNext:  { id,error in
                 if case let name = id {
-                    print(name!)
-                    let rootPage = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController
-                    let MainNavi = UINavigationController(rootViewController: rootPage!)
-                    let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                    appdelegate.window?.rootViewController = MainNavi
+                    
+                    //수정 보안 할 부분 : 버튼 클릭시 cancel 버튼 눌러도 바로 mainviewcontroller로 넘어감
                 }else if case let err = error {
                     print(err)
                 }
@@ -72,6 +77,12 @@ class LoginViewController : UIViewController {
         return graphRequest.rx.getResponse().map{ result in
             switch result {
             case let .success(response):
+                
+                
+                let rootPage = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as? UIMainTabbarViewController
+                let MainNavi = UINavigationController(rootViewController: rootPage!)
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                appdelegate.window?.rootViewController = MainNavi
                 guard let name = response.dictionaryValue?["name"] as? String else{
                     return (nil,"could't find id")
                 }
@@ -93,7 +104,7 @@ class LoginViewController : UIViewController {
         OauthLogin.setTitleColor(UIColor.white, for: .normal)
         OauthLogin.layer.borderColor = UIColor.white.cgColor
         OauthLogin.layer.borderWidth = 1.0
-        OauthLogin.setTitle("이메일 계정으로 시작하기", for: .normal)
+        OauthLogin.setTitle("다른 SNS 계정으로 시작하기", for: .normal)
         ShokBackImg.image = UIImage(named: "mainimg.jpg")
         EmailLogin.setTitle("이메일로 가입", for: .normal)
         EmailLogin.setTitleColor(UIColor.white, for: .normal)

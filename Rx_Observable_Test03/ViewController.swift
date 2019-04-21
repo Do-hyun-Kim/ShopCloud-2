@@ -38,31 +38,41 @@ struct CellModel {
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var collectionview2: UICollectionView!
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
+    
+    
     
 
-    var dataModel : [CellModel] = [CellModel(image: UIImage(named: "Test01")!, category: "IT분야", title: "5G데이터 통신을 뛰어넘은 혁신적인 기술력 에어팟", money: 50000),CellModel(image: UIImage(named: "Test01")!, category: "IT분야", title: "전기 자동차와 수소 자동차를 버튼 하나로 모드를 바꿀수 있는 자동차", money: 100000)]
-    var categoryModel : [CategoryModel] = [CategoryModel(categoryimage: UIImage(named: "Test03")!, categorytitle: "IT분야"),CategoryModel(categoryimage: UIImage(named: "Test03")!, categorytitle: "테스트 카테고리")]
+    var dataModel : [CellModel] = [CellModel(image: UIImage(named: "Test01")!, category: "IT분야", title: "5G데이터 통신을 뛰어넘은 혁신적인 기술력 에어팟", money: 50000),CellModel(image: UIImage(named: "Test01")!, category: "IT분야", title: "전기 자동차와 수소 자동차를 버튼 하나로 모드를 바꿀수 있는 자동차", money: 100000),CellModel(image: UIImage(named: "Test01")!, category: "IT분야", title: "5G데이터 통신을 뛰어넘은 혁신적인 기술력 에어팟", money: 50000)]
+    var categoryModel : [CategoryModel] = [CategoryModel(categoryimage: UIImage(named: "Test03")!, categorytitle: "IT분야"),CategoryModel(categoryimage: UIImage(named: "Test03")!, categorytitle: "테스트 카테고리"),CategoryModel(categoryimage: UIImage(named: "Test03")!, categorytitle: "테스트 카테고리")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-        
+        screenSize = UIScreen.main.bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
         
         collectionview.delegate = self
         collectionview.dataSource = self
         collectionview2.delegate = self
         collectionview2.dataSource = self
+        collectionview2.reloadData()
+        collectionview.reloadData()
         //Main
         let layout = self.collectionview.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionInset = UIEdgeInsets(top: 10, left: UIScreen.main.bounds.minX + 15, bottom: 0, right: UIScreen.main.bounds.minX + 15)
         layout?.minimumLineSpacing = 5
-        layout?.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 50) / 2, height: (UIScreen.main.bounds.size.height + 100) / 2)
+        layout?.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 50) / 2, height: (self.collectionview.bounds.maxY + 200) / 2)
         //categoty
         let categorylayout = self.collectionview2.collectionViewLayout as? UICollectionViewFlowLayout
-        //categorylayout?.itemSize = CGSize(width: (self.collectionview2.frame.size.width + 36) / 5, height: (self.collectionview2.frame.size.height - 33) / 2 )
-        categorylayout?.minimumInteritemSpacing = 1
-        categorylayout?.minimumLineSpacing = 1
+        categorylayout?.scrollDirection = .vertical
+        categorylayout?.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        categorylayout?.minimumInteritemSpacing = 0
+        categorylayout?.minimumLineSpacing = 0
+        categorylayout?.itemSize = CGSize(width: screenWidth/6, height: screenWidth/6)
         collectionview2.collectionViewLayout = categorylayout!
         
         let nib = UINib(nibName: "CustomCollectionCell", bundle: nil)
@@ -82,13 +92,21 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
         if section == 0 {
             return categoryModel.count
         }else{
             return dataModel.count
         }
         
+//        guard let cell = deq as? CustomCollectionViewCell,
+//            dataModel.count > indexPath.row else { return CustomCollectionViewCell() }
+        
     }
+    
+    
+
 
     
     
@@ -98,6 +116,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         if collectionView == self.collectionview2 {
             let cell = collectionview2.dequeueReusableCell(withReuseIdentifier: "CategoryColletionCell", for: indexPath) as? CategoryColletionCell
             cell?.configure(with: categoryModel[indexPath.row])
+            cell?.contentView.layer.borderColor = UIColor.gray.cgColor
+            cell?.contentView.layer.borderWidth = 1.0
+            cell?.layer.masksToBounds = false
+            
             
             return cell!
         }else{
@@ -117,24 +139,36 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             graphRequest?.start(completionHandler: { (connection, result, error) in
                 if error != nil {
                     print("Error",error!.localizedDescription)
-                }
-                else{
+                }else{
                     print(result!)
                     let field = result! as? [String:Any]
-                    cell?.name.text = field!["name"] as? String
-                    if let imageURL = ((field!["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
-                        print(imageURL)
-                        let url = URL(string: imageURL)
-                        let data = NSData(contentsOf: url!)
-                        let image = UIImage(data: data! as Data)
-                       cell?.Profileimg.image = image
+                    DispatchQueue.global().async {
+                        if let imageURL = ((field!["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                            print(imageURL)
+                            let url = URL(string: imageURL)
+                            let data = NSData(contentsOf: url!)
+                            let image = UIImage(data: data! as Data)
+                            guard let saveimage = image else {
+                                return print("nil image")
+                            }
+                            DispatchQueue.main.async {
+                                cell?.Profileimg.image = saveimage
+                            }
+                        
+                        }
+                        
                     }
+                    DispatchQueue.main.async {
+                      cell?.name.text = field!["name"] as? String
+                    }
+                    
+                    
                 }
             })
             
             
             
-            cell?.layer.shadowPath = UIBezierPath(roundedRect: (cell?.bounds)!, cornerRadius: (cell?.contentView.layer.cornerRadius)!).cgPath
+//            cell?.layer.shadowPath = UIBezierPath(roundedRect: (cell?.bounds)!, cornerRadius: (cell?.contentView.layer.cornerRadius)!).cgPath
             
             return cell!
         }
